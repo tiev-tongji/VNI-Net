@@ -1,0 +1,35 @@
+[DEFAULT]
+dataset = Oxford
+dataset_folder = /media/autolab/disk_2T/TGX/benchmark_datasets
+
+
+[TRAIN]
+num_workers = 8
+batch_size =64
+batch_size_limit = 128
+batch_expansion_rate = 1.4
+batch_expansion_th = 0.7
+secondary_batch_size_limit = 96
+local_batch_size = 8
+
+lr = 0.001
+epochs = 160
+scheduler_milestones = 20,40,80
+aug_mode = 2
+weight_decay = 1e-4
+
+lossgg = BatchHardQuadrupletMarginLoss
+loss = BatchHardTripletMarginLoss
+
+l_gammas = 1., 1., 1., 4.
+margin = 0.2
+margin1 = 0.5
+margin2 = 0.2
+num_points = 4096
+
+resume = False
+model_path = /media/autolab/disk_2T/TGX/Ego_vnn/weights/model_point_vnn_20221128_1032_40.pth
+
+
+train_pickle_name = training_queries_baseline.pickle
+test_pickle_name = test_queries_baseline.pickle
